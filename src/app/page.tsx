@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
 import {escapedNewLineToLineBreakTag} from "@/functions/HtmlUtils";
-import {fetchHomePage} from "@/services/MetaService";
+import {fetchHomePageFromDb} from "@/services/MetaService";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,8 +14,10 @@ const Home = () => {
   });
 
   const fetchData = () => {
-    fetchHomePage().then(data => setHomePageInfo(data));
+    // fetchHomePage().then(data => setHomePageInfo(data));
+    fetchHomePageFromDb().then(data => setHomePageInfo(data));
   };
+
 
   useEffect(() => {
     if (homePageInfo) {

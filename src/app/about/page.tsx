@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
-import {fetchAboutPage} from "@/services/MetaService";
+import {fetchAboutPageFromDb} from "@/services/MetaService";
 
 const AboutPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +12,7 @@ const AboutPage = () => {
   });
 
   const fetchData = () => {
-    fetchAboutPage().then(data => setAboutInfo(data));
+    fetchAboutPageFromDb().then(data => setAboutInfo(data));
   };
 
   useEffect(() => {
