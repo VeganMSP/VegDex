@@ -1,10 +1,11 @@
+"use client";
 import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
-import {NewLink} from "./_new_link";
-import {ILinkCategory} from "../models/ILinkCategory";
-import {ILink} from "../models/ILink";
-import {getLinksByCategory} from "../services/LinksService";
+import {NewLink} from "@/components/_new_link";
+import {ILinkCategory} from "@/models/ILinkCategory";
+import {ILink} from "@/models/ILink";
+import {getLinksByCategory} from "@/services/LinksService";
 
-export const Links = () => {
+const Links = () => {
   const [data, setData] = useState<ILinkCategory[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [formModal, setFormModal] = useState(false);
@@ -83,8 +84,9 @@ export const Links = () => {
     </div>
   );
 };
+export default Links;
 
-export const LinkCategory = (props: { category: ILinkCategory, links: ILink[] }) => {
+const LinkCategory = (props: { category: ILinkCategory, links: ILink[] }) => {
   const {category, links} = props;
 
   return (
@@ -99,7 +101,7 @@ export const LinkCategory = (props: { category: ILinkCategory, links: ILink[] })
   );
 };
 
-export const Link = (props: { link: ILink }) => {
+const Link = (props: { link: ILink }) => {
   const {name, website, description} = props.link;
 
   return (

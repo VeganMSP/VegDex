@@ -1,6 +1,5 @@
-import React from "react";
-import {ICity} from "../models/ICity";
-import {IRestaurant} from "../models/IRestaurant";
+import {ICity} from "@/models/ICity";
+import {IRestaurant} from "@/models/IRestaurant";
 import {Restaurant} from "./Restaurant";
 
 interface IProps {

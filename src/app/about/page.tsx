@@ -1,9 +1,10 @@
+"use client";
 import React, {useEffect, useState} from "react";
-import {IPageInfo} from "../models/IPageInfo";
+import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
-import {fetchAboutPage} from "../services/MetaService";
+import {fetchAboutPage} from "@/services/MetaService";
 
-export const About = () => {
+const AboutPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [aboutInfo, setAboutInfo] = useState<IPageInfo>(null!);
   const sanitizedData = () => ({
@@ -34,3 +35,4 @@ export const About = () => {
     </div>
   );
 };
+export default AboutPage;

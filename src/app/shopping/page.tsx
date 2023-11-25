@@ -1,9 +1,10 @@
+"use client";
 import React, {useEffect, useState} from "react";
-import {IFarmersMarket} from "../models/IFarmersMarket";
-import {IVeganCompany} from "../models/IVeganCompany";
-import {getShoppingData} from "../services/ShoppingService";
+import {IFarmersMarket} from "@/models/IFarmersMarket";
+import {IVeganCompany} from "@/models/IVeganCompany";
+import {getShoppingData} from "@/services/ShoppingService";
 
-export const Shopping = () => {
+const Shopping = () => {
   const [farmersMarkets, setFarmersMarkets] = useState<IFarmersMarket[] | null>(null);
   const [veganCompanies, setVeganCompanies] = useState<IVeganCompany[] | null>(null);
   const [loadingCompanies, setLoadingCompanies] = useState(true);
@@ -105,3 +106,4 @@ const VeganCompany = (props: { company: IVeganCompany }) => {
     </li>
   );
 };
+export default Shopping;

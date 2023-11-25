@@ -1,11 +1,12 @@
+"use client";
 import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import {format} from "date-fns";
-import {BlogPostFormModal} from "./_new_blog_post";
-import {IBlogPost} from "../models/IBlogPost";
-import {getBlogPosts} from "../services/BlogService";
+import {BlogPostFormModal} from "@/components/_new_blog_post";
+import {IBlogPost} from "@/models/IBlogPost";
+import {getBlogPosts} from "@/services/BlogService";
+import Link from "next/link";
 
-export const Blog = () => {
+const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<IBlogPost[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [formModal, setFormModal] = useState(false);
@@ -115,7 +116,7 @@ const BlogPost = (props: { post: IBlogPost }) => {
 						{fullDate}
             &nbsp;
 					</span>
-        <Link to={`/blog/${year}/${month}/${day}/${slug}`}>
+        <Link href={`/blog/${year}/${month}/${day}/${slug}`}>
           {title}
         </Link>
       </h3>
@@ -123,3 +124,4 @@ const BlogPost = (props: { post: IBlogPost }) => {
     </div>
   );
 };
+export default Blog;

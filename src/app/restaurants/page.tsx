@@ -1,9 +1,10 @@
+"use client";
 import React, {useEffect, useState} from "react";
-import {City} from "./City";
-import {ICity} from "../models/ICity";
-import {getRestaurantsByCity} from "../services/RestaurantService";
+import {City} from "@/components/City";
+import {ICity} from "@/models/ICity";
+import {getRestaurantsByCity} from "@/services/RestaurantService";
 
-export const Restaurants = () => {
+const Restaurants = () => {
   const [data, setData] = useState<ICity[] | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -64,3 +65,4 @@ export const Restaurants = () => {
     </div>
   );
 };
+export default Restaurants;

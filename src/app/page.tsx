@@ -1,10 +1,11 @@
+"use client";
 import React, {useEffect, useState} from "react";
-import {IPageInfo} from "../models/IPageInfo";
+import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
-import {escapedNewLineToLineBreakTag} from "../functions/HtmlUtils";
-import {fetchHomePage} from "../services/MetaService";
+import {escapedNewLineToLineBreakTag} from "@/functions/HtmlUtils";
+import {fetchHomePage} from "@/services/MetaService";
 
-export const Home = () => {
+const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [homePageInfo, setHomePageInfo] = useState<IPageInfo>(null!);
   const sanitizedData = () => ({
@@ -37,3 +38,4 @@ export const Home = () => {
     </div>
   );
 };
+export default Home;

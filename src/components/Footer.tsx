@@ -1,8 +1,5 @@
-import React from "react";
-import {useAuth} from "../hooks/useAuth";
-
 export const Footer = () => {
-  const {user} = useAuth();
+  const user = null;
 
   return (
     <footer className="footer border-top fs-7 mt-auto py-3 bg-light text-muted">

@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {format} from "date-fns";
-import withRouter from "../../helpers/withRouter";
-import {IBlogPost} from "../../models/IBlogPost";
+import {IBlogPost} from "@/models/IBlogPost";
 
 interface IState {
   slug: string;
@@ -78,4 +77,4 @@ class SingleBlogPost extends Component<any, IState> {
   }
 }
 
-export default withRouter(SingleBlogPost);
+export default SingleBlogPost;
