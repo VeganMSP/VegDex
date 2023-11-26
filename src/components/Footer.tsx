@@ -2,7 +2,7 @@ export const Footer = () => {
   const user = null;
 
   return (
-    <footer className="footer border-top fs-7 mt-auto py-3 bg-light text-muted">
+    <footer className="footer border-top fs-8 mt-auto py-3 bg-light text-muted">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-sm-4">
