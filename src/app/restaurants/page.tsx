@@ -1,38 +1,52 @@
 "use client";
 import React, {useEffect, useState} from "react";
 import {City} from "@/components/City";
-import {ICity} from "@/models/ICity";
 import {getRestaurantsByCity} from "@/services/RestaurantService";
+import {IRestaurant} from "@/models/IRestaurant";
 
 const Restaurants = () => {
-  const [data, setData] = useState<ICity[] | null>(null);
+  const [data, setData] = useState<IRestaurant[] | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const renderRestaurantsList = (restaurants_by_city: ICity[]) => {
+  const renderRestaurantsList = (restaurants: IRestaurant[] | null) => {
+    if (!restaurants) return null;
+    let restaurants_by_city: {[key: string]: IRestaurant[]} = restaurants.reduce((acc, restaurant) => {
+      acc[restaurant.city] = acc[restaurant.city] || [];
+      acc[restaurant.city].push(restaurant);
+      return acc;
+    }, Object.create(null));
+    let cities = Object.keys(restaurants_by_city).sort();
     return (
       <div>
-        {restaurants_by_city.length > 0 ? <>
-          {restaurants_by_city.map(city =>
+        {cities.length > 0 ? <>
+          {cities.map(city =>
             <City
-              key={city.slug}
+              key={city}
               city={city}
-              restaurants={city.restaurants}
+              restaurants={restaurants_by_city[city]}
             />)}
         </> : <>
           <p>There are no restaurants in the database.</p>
         </>}
       </div>
     );
-  }
+  };
 
-  const renderCityList = (restaurants_by_city: ICity[]) => {
+  const renderCityList = (restaurants: IRestaurant[] | null) => {
+    if (!restaurants) return null;
+    let restaurants_by_city: {[key: string]: IRestaurant[]} = restaurants.reduce((acc, restaurant) => {
+      acc[restaurant.city] = acc[restaurant.city] || [];
+      acc[restaurant.city].push(restaurant);
+      return acc;
+    }, Object.create(null));
+    let cities = Object.keys(restaurants_by_city).sort();
     return (
       <div>
-        {restaurants_by_city.length > 0 ? <>
+        {cities.length > 0 ? <>
           Jump to city:
           <ul>
-            {restaurants_by_city.map(city =>
-              <li key={city.slug}><a href={"#" + city.slug}>{city.name}</a></li>
+            {cities.map(city =>
+              <li key={city}><a href={"#" + city}>{city}</a></li>
             )}
           </ul>
         </> : <>
@@ -40,18 +54,17 @@ const Restaurants = () => {
         </>}
       </div>
     );
-  }
+  };
 
   useEffect(() => {
     if (data) {
       setLoading(false);
     } else {
-      getRestaurantsByCity().then(r => {
-        if (r.ok) return r.json();
-      }).then(data => {
-        setData(data);
-        setLoading(false);
-      })
+      getRestaurantsByCity()
+        .then(data => {
+          setData(data);
+          setLoading(false);
+        });
     }
   }, [data]);
 
@@ -59,8 +72,8 @@ const Restaurants = () => {
     <div>
       <h2>Restaurants</h2>
       {loading ? <p><em>Loading...</em></p> : <>
-        {renderCityList(data as ICity[])}
-        {renderRestaurantsList(data as ICity[])}
+        {renderCityList(data)}
+        {renderRestaurantsList(data)}
       </>}
     </div>
   );

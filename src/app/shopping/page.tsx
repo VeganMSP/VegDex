@@ -59,11 +59,7 @@ const Shopping = () => {
       setLoadingMarkets(false);
       setLoadingCompanies(false);
     } else {
-      getShoppingData().then(r => {
-        if (r.ok) {
-          return r.json();
-        }
-      }).then(data => {
+      getShoppingData().then(data => {
         setFarmersMarkets(data.farmersMarkets);
         setVeganCompanies(data.veganCompanies);
         setLoadingCompanies(false);
@@ -91,7 +87,7 @@ const FarmersMarket = (props: { market: IFarmersMarket }) => {
 
   return (
     <li>
-      <a href={website}>{name}</a> - {address.name} - {description}
+      <a href={website}>{name}</a> - {address} - {description}
     </li>
   );
 };

@@ -6,6 +6,7 @@ import {IPageInfo} from "@/models/IPageInfo";
 export const fetchHomePageFromDb = async (): Promise<IPageInfo> => {
   let homepage;
   let startTime = Date.now();
+  console.log("db: ", db);
   try {
     homepage = await db
       .selectFrom("contentPages")

@@ -1,9 +1,8 @@
-import {ICity} from "@/models/ICity";
 import {IRestaurant} from "@/models/IRestaurant";
 import {Restaurant} from "./Restaurant";
 
 interface IProps {
-  city: ICity;
+  city: string;
   restaurants: IRestaurant[];
 }
 
@@ -12,7 +11,7 @@ export const City = (props: IProps) => {
 
   return (
     <div>
-      <h3 id={city.slug}>{city.name}</h3>
+      <h3 id={city}>{city}</h3>
       <ul>
         {restaurants.map(restaurant =>
           <Restaurant

@@ -73,20 +73,18 @@ const Blog = () => {
         </div>
       );
     }
-  }
+  };
 
   const handleSubmit = (title: string, content: string, status: string) => {
     console.log(title, content, status);
-  }
+  };
 
   useEffect(() => {
     if (blogPosts) {
       setLoading(false);
     } else {
-      getBlogPosts().then(r => {
-        if (r.ok) return r.json();
-      }).then(data => {
-        setBlogPosts(data)
+      getBlogPosts().then(data => {
+        setBlogPosts(data);
       });
     }
   }, [blogPosts]);
@@ -102,8 +100,8 @@ const Blog = () => {
 };
 
 const BlogPost = (props: { post: IBlogPost }) => {
-  const {title, slug, content, created_at} = props.post;
-  const date = new Date(created_at);
+  const {title, slug, content, createdAt} = props.post;
+  const date = new Date(createdAt);
   const fullDate = format(date, "yyyy-MM-dd");
   const year = format(date, "yyyy");
   const month = format(date, "MM");

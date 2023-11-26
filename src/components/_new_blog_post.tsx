@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalBody} from "reactstrap";
 import AsyncCreatableSelect from "react-select/async-creatable";
-import {getBlogPostCategories} from "../services/BlogService";
+import {getBlogPostCategories} from "@/services/BlogService";
 
 export const BlogPostStatus = {
   DRAFT: 0,
@@ -25,7 +25,7 @@ export const BlogPostFormModal = (props: IProps) => {
 
   return (
     <>
-      <Button class={"primary"} onClick={toggleFunc}>
+      <Button className={"primary"} onClick={toggleFunc}>
         Create New +
       </Button>
 
