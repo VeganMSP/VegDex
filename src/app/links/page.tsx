@@ -9,6 +9,7 @@ const Links = () => {
   const [loading, setLoading] = useState(true);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string}>({});
+  const user = null;
 
   const renderLinksList = (links: ILink[] | null) => {
     if (!links) return null;
@@ -80,12 +81,12 @@ const Links = () => {
 
   return (
     <div>
-      <NewLink
+      {user ? <NewLink
         isOpen={formModal}
         toggleFunc={toggleModal}
         changeFunc={handleChange}
         submitFunc={submitForm}
-      />
+      /> : null}
       <h2>Groups & Links</h2>
       {loading ? <p><em>Loading...</em></p> : renderLinksList(data)}
     </div>

@@ -11,6 +11,7 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string }>({});
+  const user = null;
 
   const toggleModal = () => setFormModal(!formModal);
 
@@ -54,7 +55,7 @@ const Blog = () => {
     if (blog_posts.length > 0) {
       return (
         <div>
-          {blogPostFormModal}
+          {user ? blogPostFormModal : null}
           <ul>
             {blog_posts.map(post =>
               <BlogPost
@@ -68,7 +69,7 @@ const Blog = () => {
     } else {
       return (
         <div>
-          {blogPostFormModal}
+          {user ? blogPostFormModal : null}
           <p>There are no blog posts in the database!</p>
         </div>
       );
