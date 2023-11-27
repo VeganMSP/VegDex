@@ -15,7 +15,7 @@ export const Restaurant = (props: {restaurant: IRestaurant}) => {
 
     return (
       <li key={restaurant.name}>
-        {restaurant_name} - {restaurant.description}
+        {restaurant_name} {restaurant.description ? <>- {restaurant.description}</> : null}
       </li>
     );
   };

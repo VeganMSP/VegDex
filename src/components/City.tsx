@@ -11,7 +11,9 @@ export const City = (props: IProps) => {
 
   return (
     <div>
-      <h3 id={city}>{city}</h3>
+      <h3 id={city}
+          className={"text-2xl font-bold"}
+      >{city}</h3>
       <ul>
         {restaurants.map(restaurant =>
           <Restaurant
