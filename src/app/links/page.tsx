@@ -1,6 +1,5 @@
 "use client";
 import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
-import {NewLink} from "@/components/_new_link";
 import {ILink} from "@/models/ILink";
 import {getLinksByCategory} from "@/services/LinksService";
 import {DataSection} from "@/app/ui/dataSection";
@@ -81,14 +80,6 @@ const Links = () => {
   };
 
   return (<>
-    <div>
-      {user ? <NewLink
-        isOpen={formModal}
-        toggleFunc={toggleModal}
-        changeFunc={handleChange}
-        submitFunc={submitForm}
-      /> : null}
-    </div>
     <DataSection isLoading={loading} sectionTitle={"Groups & Links"}>
       {renderLinksList(data)}
     </DataSection>

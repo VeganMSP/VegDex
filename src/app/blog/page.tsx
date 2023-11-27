@@ -1,7 +1,6 @@
 "use client";
 import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {format} from "date-fns";
-import {BlogPostFormModal} from "@/components/_new_blog_post";
 import {IBlogPost} from "@/models/IBlogPost";
 import {getBlogPosts} from "@/services/BlogService";
 import Link from "next/link";
@@ -44,18 +43,10 @@ const Blog = () => {
     }
   };
 
-  const blogPostFormModal = <BlogPostFormModal
-    isOpen={formModal}
-    toggleFunc={toggleModal}
-    changeFunc={handleChange}
-    submitFunc={submitForm}
-  />;
-
   const renderBlogPosts = (blog_posts: IBlogPost[]) => {
     if (blog_posts.length > 0) {
       return (
         <div>
-          {user ? blogPostFormModal : null}
           <ul>
             {blog_posts.map(post =>
               <BlogPost
@@ -69,7 +60,6 @@ const Blog = () => {
     } else {
       return (
         <div>
-          {user ? blogPostFormModal : null}
           <p>There are no blog posts in the database!</p>
         </div>
       );
