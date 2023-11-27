@@ -1,12 +1,12 @@
 "use client";
-import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import {ILink} from "@/models/ILink";
 import {getLinksByCategory} from "@/services/LinksService";
 import {DataSection} from "@/app/ui/dataSection";
+import useSWR from "swr";
 
 const Links = () => {
-  const [data, setData] = useState<ILink[] | null>(null);
-  const [loading, setLoading] = useState(true);
+  const {data, isLoading, error} = useSWR<ILink[]>("links", getLinksByCategory);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string}>({});
   const user = null;
@@ -37,17 +37,6 @@ const Links = () => {
       </div>
     );
   };
-
-  useEffect(() => {
-    if (data) {
-      setLoading(false);
-    } else {
-      getLinksByCategory().then(data => {
-        setData(data);
-        setLoading(false);
-      });
-    }
-  }, [data]);
 
   const toggleModal = () => setFormModal(!formModal);
 
@@ -80,8 +69,8 @@ const Links = () => {
   };
 
   return (<>
-    <DataSection isLoading={loading} sectionTitle={"Groups & Links"}>
-      {renderLinksList(data)}
+    <DataSection isLoading={isLoading} sectionTitle={"Groups & Links"}>
+      {renderLinksList(data as ILink[])}
     </DataSection>
   </>);
 };

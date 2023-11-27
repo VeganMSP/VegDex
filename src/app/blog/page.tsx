@@ -1,13 +1,13 @@
 "use client";
-import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
+import useSWR from "swr";
 import {format} from "date-fns";
 import {IBlogPost} from "@/models/IBlogPost";
 import {getBlogPosts} from "@/services/BlogService";
 import Link from "next/link";
 
 const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState<IBlogPost[] | null>(null);
-  const [loading, setLoading] = useState(true);
+  const {data, isLoading, error} = useSWR<IBlogPost[]>("blogPosts", getBlogPosts);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string }>({});
   const user = null;
@@ -70,21 +70,11 @@ const Blog = () => {
     console.log(title, content, status);
   };
 
-  useEffect(() => {
-    if (blogPosts) {
-      setLoading(false);
-    } else {
-      getBlogPosts().then(data => {
-        setBlogPosts(data);
-      });
-    }
-  }, [blogPosts]);
-
   return (
     <>
       <div>
-        {loading ? <p><em>Loading...</em></p> :
-          renderBlogPosts(blogPosts as IBlogPost[])}
+        {isLoading ? <p><em>Loading...</em></p> :
+          renderBlogPosts(data as IBlogPost[])}
       </div>
     </>
   );

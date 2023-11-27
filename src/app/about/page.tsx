@@ -1,30 +1,19 @@
 "use client";
-import React, {useEffect, useState} from "react";
 import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
+import useSWR from "swr";
 import {fetchAboutPageFromDb} from "@/services/MetaService";
 import {ContentPage} from "@/app/ui/contentPage";
 import {escapedNewLineToLineBreakTag} from "@/functions/HtmlUtils";
 
 const AboutPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [aboutInfo, setAboutInfo] = useState<IPageInfo>(null!);
+  const { data, isLoading, error } = useSWR<IPageInfo>("aboutPage", fetchAboutPageFromDb);
   const sanitizedData = () => ({
     __html: DOMPurify.sanitize(
-      escapedNewLineToLineBreakTag(aboutInfo.content).join(""))
+      escapedNewLineToLineBreakTag(data?.content as string).join(""))
   });
 
-  const fetchData = () => {
-    fetchAboutPageFromDb().then(data => setAboutInfo(data));
-  };
-
-  useEffect(() => {
-    if (aboutInfo) {
-      setIsLoading(false);
-    } else {
-      fetchData();
-    }
-  }, [aboutInfo]);
+  if (error) console.error(error);
 
   return (
     <ContentPage isLoading={isLoading}

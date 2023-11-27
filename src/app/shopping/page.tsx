@@ -1,15 +1,12 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import useSWR from "swr";
 import {IFarmersMarket} from "@/models/IFarmersMarket";
 import {IVeganCompany} from "@/models/IVeganCompany";
 import {getShoppingData} from "@/services/ShoppingService";
 import {DataSection} from "@/app/ui/dataSection";
 
 const Shopping = () => {
-  const [farmersMarkets, setFarmersMarkets] = useState<IFarmersMarket[] | null>(null);
-  const [veganCompanies, setVeganCompanies] = useState<IVeganCompany[] | null>(null);
-  const [loadingCompanies, setLoadingCompanies] = useState(true);
-  const [loadingMarkets, setLoadingMarkets] = useState(true);
+  const { data, isLoading, error} = useSWR<{veganCompanies: IVeganCompany[], farmersMarkets: IFarmersMarket[]}>("farmersMarkets", getShoppingData);
 
   function renderVeganCompaniesList(veganCompanies: IVeganCompany[]) {
     if (veganCompanies && veganCompanies.length > 0) {
@@ -53,26 +50,12 @@ const Shopping = () => {
     );
   }
 
-  useEffect(() => {
-    if (farmersMarkets && veganCompanies) {
-      setLoadingMarkets(false);
-      setLoadingCompanies(false);
-    } else {
-      getShoppingData().then(data => {
-        setFarmersMarkets(data.farmersMarkets);
-        setVeganCompanies(data.veganCompanies);
-        setLoadingCompanies(false);
-        setLoadingMarkets(false);
-      });
-    }
-  }, [veganCompanies, farmersMarkets]);
-
   return (<>
-    <DataSection isLoading={loadingCompanies} sectionTitle={"Vegan Companies"}>
-      {renderVeganCompaniesList(veganCompanies as IVeganCompany[])}
+    <DataSection isLoading={isLoading} sectionTitle={"Vegan Companies"}>
+      {renderVeganCompaniesList(data?.veganCompanies as IVeganCompany[])}
     </DataSection>
-    <DataSection isLoading={loadingMarkets} sectionTitle={"Farmers Markets"}>
-      {renderFarmersMarketsList(farmersMarkets as IFarmersMarket[])}
+    <DataSection isLoading={isLoading} sectionTitle={"Farmers Markets"}>
+      {renderFarmersMarketsList(data?.farmersMarkets as IFarmersMarket[])}
     </DataSection>
   </>);
 };

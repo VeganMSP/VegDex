@@ -1,15 +1,14 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import useSWR from "swr";
 import {City} from "@/components/City";
 import {getRestaurantsByCity} from "@/services/RestaurantService";
 import {IRestaurant} from "@/models/IRestaurant";
 import {DataSection} from "@/app/ui/dataSection";
 
 const Restaurants = () => {
-  const [data, setData] = useState<IRestaurant[] | null>(null);
-  const [loading, setLoading] = useState(true);
+  const {data, isLoading, error} = useSWR<IRestaurant[]>("restaurants", getRestaurantsByCity);
 
-  const renderRestaurantsList = (restaurants: IRestaurant[] | null) => {
+  const renderRestaurantsList = (restaurants?: IRestaurant[]) => {
     if (!restaurants) return null;
     let restaurants_by_city: {[key: string]: IRestaurant[]} = restaurants.reduce((acc, restaurant) => {
       acc[restaurant.city] = acc[restaurant.city] || [];
@@ -33,7 +32,7 @@ const Restaurants = () => {
     );
   };
 
-  const renderCityList = (restaurants: IRestaurant[] | null) => {
+  const renderCityList = (restaurants?: IRestaurant[]) => {
     if (!restaurants) return null;
     let restaurants_by_city: {[key: string]: IRestaurant[]} = restaurants.reduce((acc, restaurant) => {
       acc[restaurant.city] = acc[restaurant.city] || [];
@@ -57,20 +56,8 @@ const Restaurants = () => {
     );
   };
 
-  useEffect(() => {
-    if (data) {
-      setLoading(false);
-    } else {
-      getRestaurantsByCity()
-        .then(data => {
-          setData(data);
-          setLoading(false);
-        });
-    }
-  }, [data]);
-
   return (
-    <DataSection isLoading={loading} sectionTitle={"Restaurants"}>
+    <DataSection isLoading={isLoading} sectionTitle={"Restaurants"}>
         {renderCityList(data)}
         {renderRestaurantsList(data)}
     </DataSection>
