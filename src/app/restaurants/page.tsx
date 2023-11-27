@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {City} from "@/components/City";
 import {getRestaurantsByCity} from "@/services/RestaurantService";
 import {IRestaurant} from "@/models/IRestaurant";
+import {DataSection} from "@/app/ui/dataSection";
 
 const Restaurants = () => {
   const [data, setData] = useState<IRestaurant[] | null>(null);
@@ -69,13 +70,10 @@ const Restaurants = () => {
   }, [data]);
 
   return (
-    <div>
-      <h2>Restaurants</h2>
-      {loading ? <p><em>Loading...</em></p> : <>
+    <DataSection isLoading={loading} sectionTitle={"Restaurants"}>
         {renderCityList(data)}
         {renderRestaurantsList(data)}
-      </>}
-    </div>
+    </DataSection>
   );
 };
 export default Restaurants;

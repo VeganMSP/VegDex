@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
 import {fetchAboutPageFromDb} from "@/services/MetaService";
+import {ContentPage} from "@/app/ui/contentPage";
 
 const AboutPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,15 +25,9 @@ const AboutPage = () => {
   }, [aboutInfo]);
 
   return (
-    <div>
-      <h2>About</h2>
-      {isLoading ?
-        <p>Loading...</p> :
-        <>
-          <div dangerouslySetInnerHTML={sanitizedData()}></div>
-        </>
-      }
-    </div>
+    <ContentPage isLoading={isLoading}
+                 pageTitle={"About"}
+                 sanitizedData={sanitizedData} />
   );
 };
 export default AboutPage;

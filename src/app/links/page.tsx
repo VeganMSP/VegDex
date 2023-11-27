@@ -3,6 +3,7 @@ import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {NewLink} from "@/components/_new_link";
 import {ILink} from "@/models/ILink";
 import {getLinksByCategory} from "@/services/LinksService";
+import {DataSection} from "@/app/ui/dataSection";
 
 const Links = () => {
   const [data, setData] = useState<ILink[] | null>(null);
@@ -79,7 +80,7 @@ const Links = () => {
     }
   };
 
-  return (
+  return (<>
     <div>
       {user ? <NewLink
         isOpen={formModal}
@@ -87,10 +88,11 @@ const Links = () => {
         changeFunc={handleChange}
         submitFunc={submitForm}
       /> : null}
-      <h2>Groups & Links</h2>
-      {loading ? <p><em>Loading...</em></p> : renderLinksList(data)}
     </div>
-  );
+    <DataSection isLoading={loading} sectionTitle={"Groups & Links"}>
+      {renderLinksList(data)}
+    </DataSection>
+  </>);
 };
 export default Links;
 

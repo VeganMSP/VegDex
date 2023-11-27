@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {IFarmersMarket} from "@/models/IFarmersMarket";
 import {IVeganCompany} from "@/models/IVeganCompany";
 import {getShoppingData} from "@/services/ShoppingService";
+import {DataSection} from "@/app/ui/dataSection";
 
 const Shopping = () => {
   const [farmersMarkets, setFarmersMarkets] = useState<IFarmersMarket[] | null>(null);
@@ -11,7 +12,7 @@ const Shopping = () => {
   const [loadingMarkets, setLoadingMarkets] = useState(true);
 
   function renderVeganCompaniesList(veganCompanies: IVeganCompany[]) {
-    if (veganCompanies.length > 0) {
+    if (veganCompanies && veganCompanies.length > 0) {
       return (
         <div>
           <ul>
@@ -23,17 +24,16 @@ const Shopping = () => {
           </ul>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <p>There are no vegan companies in the database!</p>
-        </div>
-      );
     }
+    return (
+      <div>
+        <p>There are no vegan companies in the database!</p>
+      </div>
+    );
   }
 
   function renderFarmersMarketsList(farmersMarkets: IFarmersMarket[]) {
-    if (farmersMarkets.length > 0) {
+    if (farmersMarkets && farmersMarkets.length > 0) {
       return (
         <div>
           <ul>
@@ -45,13 +45,12 @@ const Shopping = () => {
           </ul>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <p>There are no farmers markets in the database!</p>
-        </div>
-      );
     }
+    return (
+      <div>
+        <p>There are no farmers markets in the database!</p>
+      </div>
+    );
   }
 
   useEffect(() => {
@@ -69,16 +68,12 @@ const Shopping = () => {
   }, [veganCompanies, farmersMarkets]);
 
   return (<>
-    <div>
-      <h2>Vegan Companies</h2>
-      {loadingCompanies ? <p><em>Loading...</em></p> :
-        renderVeganCompaniesList(veganCompanies as IVeganCompany[])}
-    </div>
-    <div>
-      <h2>Farmers Markets</h2>
-      {loadingMarkets ? <p><em>Loading...</em></p> :
-        renderFarmersMarketsList(farmersMarkets as IFarmersMarket[])}
-    </div>
+    <DataSection isLoading={loadingCompanies} sectionTitle={"Vegan Companies"}>
+      {renderVeganCompaniesList(veganCompanies as IVeganCompany[])}
+    </DataSection>
+    <DataSection isLoading={loadingMarkets} sectionTitle={"Farmers Markets"}>
+      {renderFarmersMarketsList(farmersMarkets as IFarmersMarket[])}
+    </DataSection>
   </>);
 };
 

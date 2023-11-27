@@ -1,10 +1,7 @@
 import {Roboto} from "next/font/google";
 import {Metadata} from "next";
-import {Footer} from "@/components/Footer";
-import {Header} from "@/components/Header";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {Footer, Header} from "@/app/ui/headers";
 import "./globals.css";
-import {Container} from "reactstrap";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -21,12 +18,12 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: { children: React.ReactNode }) {
   return (
     <html lang={"en"} className={"bg-white"}>
-    <body className={roboto.className}>
+    <body className={`${roboto.className} flex flex-col h-screen`}>
     <Header/>
-    <div className={"flex-shrink-0 pb-3"}>
-      <Container>
+    <div className={"pb-3 w-full"}>
+      <div className={"w-5/6 mx-auto px-3"}>
         {children}
-      </Container>
+      </div>
     </div>
     <Footer/>
     </body>

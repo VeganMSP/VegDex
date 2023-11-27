@@ -4,6 +4,7 @@ import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
 import {escapedNewLineToLineBreakTag} from "@/functions/HtmlUtils";
 import {fetchHomePageFromDb} from "@/services/MetaService";
+import {ContentPage} from "@/app/ui/contentPage";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,22 +23,15 @@ const Home = () => {
   useEffect(() => {
     if (homePageInfo) {
       setIsLoading(false);
-      console.log(homePageInfo);
     } else {
       fetchData();
     }
   }, [homePageInfo]);
 
   return (
-    <div>
-      <h2>VeganMSP.com</h2>
-      {isLoading ?
-        <p>Loading...</p> :
-        <>
-          <div dangerouslySetInnerHTML={sanitizedData()}></div>
-        </>
-      }
-    </div>
+    <ContentPage isLoading={isLoading}
+                 pageTitle={"VeganMSP.com"}
+                 sanitizedData={sanitizedData}/>
   );
 };
 export default Home;
