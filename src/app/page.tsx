@@ -1,17 +1,13 @@
 "use client";
 import {IPageInfo} from "@/models/IPageInfo";
-import DOMPurify from "dompurify";
 import useSWR from "swr";
-import {escapedNewLineToLineBreakTag} from "@/functions/HtmlUtils";
 import {fetchHomePageFromDb} from "@/services/MetaService";
 import {ContentPage} from "@/app/ui/contentPage";
+import {sanitizeHTML} from "@/functions/HtmlUtils";
 
 const Home = () => {
   const {data, isLoading, error} = useSWR<IPageInfo>("homePage", fetchHomePageFromDb);
-  const sanitizedData = () => ({
-    __html: DOMPurify.sanitize(
-      escapedNewLineToLineBreakTag(data?.content as string).join(""))
-  });
+  const sanitizedData = sanitizeHTML(data?.content as string);
 
   return (
     <ContentPage isLoading={isLoading}
