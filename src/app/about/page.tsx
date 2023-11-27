@@ -4,12 +4,14 @@ import {IPageInfo} from "@/models/IPageInfo";
 import DOMPurify from "dompurify";
 import {fetchAboutPageFromDb} from "@/services/MetaService";
 import {ContentPage} from "@/app/ui/contentPage";
+import {escapedNewLineToLineBreakTag} from "@/functions/HtmlUtils";
 
 const AboutPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [aboutInfo, setAboutInfo] = useState<IPageInfo>(null!);
   const sanitizedData = () => ({
-    __html: DOMPurify.sanitize(aboutInfo.content)
+    __html: DOMPurify.sanitize(
+      escapedNewLineToLineBreakTag(aboutInfo.content).join(""))
   });
 
   const fetchData = () => {
