@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.fs-8 {
-    font-size: 0.875rem;
+.inline-list {
+    display: inline;
+}
+
+.inline-list li {
+    display: inline;
+}
+
+.inline-list li:not(:last-child)::after {
+    content: " | ";
 }

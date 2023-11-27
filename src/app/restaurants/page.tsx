@@ -43,8 +43,8 @@ const Restaurants = () => {
     return (
       <div>
         {cities.length > 0 ? <>
-          Jump to city:
-          <ul>
+          Jump to city:{" "}
+          <ul className={"inline-list"}>
             {cities.map(city =>
               <li key={city}><a href={"#" + city}>{city}</a></li>
             )}
