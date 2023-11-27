@@ -1,14 +1,9 @@
-import {Roboto} from "next/font/google";
 import {Metadata} from "next";
 import {Footer, Header} from "@/app/ui/headers";
 import "./globals.css";
+import {roboto} from "@/app/ui/fonts";
 
-const roboto = Roboto({
-  weight: ["400", "700"],
-  style: ["normal"],
-  subsets: ["latin"],
-  display: "swap",
-});
+
 
 export const metadata: Metadata = {
   title: "VegDex",
