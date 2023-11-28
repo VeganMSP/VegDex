@@ -29,11 +29,11 @@ export const RestaurantLink = (props: {restaurant: IRestaurant}): JSX.Element =>
     );
   } else if (!allVegan && website !== "") {
     return (
-      <a href={website}>{name}</a>
+      <a href={website} target={"_blank"}>{name}</a>
     );
   } else if (allVegan && website !== "") {
     return (
-      <a href={website}><strong>{name}</strong></a>
+      <a href={website} target={"_blank"}><strong>{name}</strong></a>
     );
   } else {
     return (<>
