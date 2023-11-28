@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+    @apply text-blue-500;
+}
+
 .inline-list {
     display: inline;
 }

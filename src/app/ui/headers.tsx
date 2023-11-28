@@ -20,7 +20,7 @@ export const Header = () => {
     <header className={`bg-white ${inter.className}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5 text-lg font-bold">
+          <a href="#" className="-m-1.5 p-1.5 text-lg text-gray-900 font-bold">
             VegDex
           </a>
         </div>
