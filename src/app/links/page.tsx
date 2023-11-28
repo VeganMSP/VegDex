@@ -13,15 +13,12 @@ const Links = () => {
 
   const renderLinksList = (links: ILink[] | null) => {
     if (!links) return null;
-    console.log("links: ", links);
     let links_by_category: { [key: string]: ILink[] } = links.reduce((acc, link) => {
       acc[link.category] = acc[link.category] || [];
       acc[link.category].push(link);
       return acc;
     }, Object.create(null));
-    console.log("links_by_category: ", links_by_category);
     let categories = Object.keys(links_by_category).sort();
-    console.log("categories: ", categories);
     return (
       <div>
         {categories.length > 0 ? <>
@@ -69,7 +66,7 @@ const Links = () => {
   };
 
   return (<>
-    <DataSection isLoading={isLoading} sectionTitle={"Groups & Links"}>
+    <DataSection isLoading={isLoading} key={"Groups & Links"} sectionTitle={"Groups & Links"}>
       {renderLinksList(data as ILink[])}
     </DataSection>
   </>);
@@ -84,7 +81,7 @@ const LinkCategory = (props: { category: string, links: ILink[] }) => {
       <h3>{category}</h3>
       <ul>
         {links.map(link =>
-          <Link key={link.slug} link={link}/>
+          <Link key={link.name} link={link}/>
         )}
       </ul>
     </div>
