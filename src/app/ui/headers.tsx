@@ -3,6 +3,8 @@ import {useState} from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {inter} from "@/app/ui/fonts";
+import {SignIn, SignOut} from "@/components/auth-components";
+import {useAuthorization} from "@/hooks/useAuthorization";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -80,7 +82,7 @@ export const Header = () => {
 };
 
 export const Footer = () => {
-  const user = null;
+  const {isAdmin, data: session, update} = useAuthorization();
 
   return (
     <footer className="footer border-t text-sm text-gray-700 py-4 mt-auto w-full box-border bg-gray-100/60">
@@ -88,7 +90,8 @@ export const Footer = () => {
         <div className="flex flex-row flex-wrap mx-3 mt-2 items-center">
           <div className="flex-grow-0 flex-shrink-0 basis-auto w-1/3">
             <SiteBio/>
-            {user ? "Logged in" : "Not logged in"}
+            {session ?
+              <>{isAdmin ? <><a href={"/dashboard"}>Dashboard</a> |</> : null} <SignOut/></> : <SignIn/>}
           </div>
 
           <div className="flex-grow flex-shrink-0 basis-auto text-right">
