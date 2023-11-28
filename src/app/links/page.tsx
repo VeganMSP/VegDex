@@ -3,14 +3,21 @@ import React, {ChangeEvent, FormEvent, useState} from "react";
 import {ILink} from "@/models/ILink";
 import {DataSection} from "@/app/ui/dataSection";
 import useSWR from "swr";
+import {useAuthorization} from "@/hooks/useAuthorization";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const NewLink = () => {
+  return (
+    <p>Congrats, {"you're"} an admin!</p>
+  );
+};
 
 const Links = () => {
   const {data, isLoading, error} = useSWR<ILink[]>("/api/links", fetcher);
   const [formModal, setFormModal] = useState(false);
-  const [form, setForm] = useState<{ [key: string]: string}>({});
-  const user = null;
+  const [form, setForm] = useState<{ [key: string]: string }>({});
+  const {isAdmin} = useAuthorization();
 
   const renderLinksList = (links: ILink[] | null) => {
     if (!links) return null;
@@ -67,6 +74,7 @@ const Links = () => {
   };
 
   return (<>
+    {isAdmin ? <NewLink/> : null}
     <DataSection isLoading={isLoading} key={"Groups & Links"} sectionTitle={"Groups & Links"}>
       {renderLinksList(data as ILink[])}
     </DataSection>
