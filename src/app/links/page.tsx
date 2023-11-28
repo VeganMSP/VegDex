@@ -79,7 +79,10 @@ const LinkCategory = (props: { category: string, links: ILink[] }) => {
 
   return (
     <div>
-      <h3>{category}</h3>
+      <h3
+        id={category}
+        className="text-2xl font-bold mt-6"
+      >{category}</h3>
       <ul>
         {links.map(link =>
           <Link key={link.name} link={link}/>
@@ -93,9 +96,12 @@ const Link = (props: { link: ILink }) => {
   const {name, url, description} = props.link;
 
   return (
-    <li>
+    <li
+      className="mb-2"
+    >
       <a
-        href={url} target={"_blank"} rel="noreferrer">{name}</a> - {description}
+        href={url} target={"_blank"} rel="noreferrer">{name}</a>
+      {description ? <p className="text-sm">{description}</p> : null}
     </li>
   );
 };
