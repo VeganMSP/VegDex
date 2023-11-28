@@ -18,7 +18,7 @@ export const SignOut = ({children, ...props}:
                           { children?: ReactNode } & HTMLAttributes<any>) => {
   return (
     <form
-      action={async (e) => await signOutAction()}
+      action={async () => await signOutAction()}
       className={"inline"}
     >
       <button {...props}>
