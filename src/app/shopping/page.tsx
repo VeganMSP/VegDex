@@ -2,13 +2,18 @@
 import useSWR from "swr";
 import {IFarmersMarket} from "@/models/IFarmersMarket";
 import {IVeganCompany} from "@/models/IVeganCompany";
-import {getShoppingData} from "@/services/ShoppingService";
 import {DataSection} from "@/app/ui/dataSection";
 
-const Shopping = () => {
-  const { data, isLoading, error} = useSWR<{veganCompanies: IVeganCompany[], farmersMarkets: IFarmersMarket[]}>("farmersMarkets", getShoppingData);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-  function renderVeganCompaniesList(veganCompanies: IVeganCompany[]) {
+const Shopping = () => {
+  const { data: veganCompanyData, isLoading: veganCompanyLoading, error: veganCompanyError} = useSWR<IVeganCompany[]>("/api/shopping/vegan-companies", fetcher);
+  const { data: farmersMarketData, isLoading: farmersMarketLoading, error: farmersMarketError} = useSWR<IFarmersMarket[]>("/api/shopping/farmers-markets", fetcher);
+
+  if (veganCompanyError) console.error(veganCompanyError);
+  if (farmersMarketError) console.error(farmersMarketError);
+
+  function renderVeganCompaniesList(veganCompanies?: IVeganCompany[]) {
     if (veganCompanies && veganCompanies.length > 0) {
       return (
         <div>
@@ -29,7 +34,7 @@ const Shopping = () => {
     );
   }
 
-  function renderFarmersMarketsList(farmersMarkets: IFarmersMarket[]) {
+  function renderFarmersMarketsList(farmersMarkets?: IFarmersMarket[]) {
     if (farmersMarkets && farmersMarkets.length > 0) {
       return (
         <div>
@@ -51,11 +56,11 @@ const Shopping = () => {
   }
 
   return (<>
-    <DataSection isLoading={isLoading} sectionTitle={"Vegan Companies"}>
-      {renderVeganCompaniesList(data?.veganCompanies as IVeganCompany[])}
+    <DataSection isLoading={veganCompanyLoading} sectionTitle={"Vegan Companies"}>
+      {renderVeganCompaniesList(veganCompanyData)}
     </DataSection>
-    <DataSection isLoading={isLoading} sectionTitle={"Farmers Markets"}>
-      {renderFarmersMarketsList(data?.farmersMarkets as IFarmersMarket[])}
+    <DataSection isLoading={farmersMarketLoading} sectionTitle={"Farmers Markets"}>
+      {renderFarmersMarketsList(farmersMarketData)}
     </DataSection>
   </>);
 };

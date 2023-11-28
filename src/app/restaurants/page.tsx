@@ -5,8 +5,10 @@ import {getRestaurantsByCity} from "@/services/RestaurantService";
 import {IRestaurant} from "@/models/IRestaurant";
 import {DataSection} from "@/app/ui/dataSection";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const Restaurants = () => {
-  const {data, isLoading, error} = useSWR<IRestaurant[]>("restaurants", getRestaurantsByCity);
+  const {data, isLoading, error} = useSWR<IRestaurant[]>("/api/restaurants", fetcher);
 
   const renderRestaurantsList = (restaurants?: IRestaurant[]) => {
     if (!restaurants) return null;

@@ -1,12 +1,13 @@
 "use client";
 import React, {ChangeEvent, FormEvent, useState} from "react";
 import {ILink} from "@/models/ILink";
-import {getLinksByCategory} from "@/services/LinksService";
 import {DataSection} from "@/app/ui/dataSection";
 import useSWR from "swr";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const Links = () => {
-  const {data, isLoading, error} = useSWR<ILink[]>("links", getLinksByCategory);
+  const {data, isLoading, error} = useSWR<ILink[]>("/api/links", fetcher);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string}>({});
   const user = null;

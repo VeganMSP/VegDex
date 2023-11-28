@@ -1,12 +1,13 @@
 "use client";
 import {IPageInfo} from "@/models/IPageInfo";
 import useSWR from "swr";
-import {fetchAboutPageFromDb} from "@/services/MetaService";
 import {ContentPage} from "@/app/ui/contentPage";
 import {sanitizeHTML} from "@/functions/HtmlUtils";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const AboutPage = () => {
-  const { data, isLoading, error } = useSWR<IPageInfo>("aboutPage", fetchAboutPageFromDb);
+  const { data, isLoading, error } = useSWR<IPageInfo>("/api/meta/about", fetcher);
   const sanitizedData = sanitizeHTML(data?.content as string);
 
   if (error) console.error(error);

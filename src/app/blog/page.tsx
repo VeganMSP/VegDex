@@ -3,16 +3,19 @@ import React, {ChangeEvent, FormEvent, useState} from "react";
 import useSWR from "swr";
 import {format} from "date-fns";
 import {IBlogPost} from "@/models/IBlogPost";
-import {getBlogPosts} from "@/services/BlogService";
 import Link from "next/link";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const Blog = () => {
-  const {data, isLoading, error} = useSWR<IBlogPost[]>("blogPosts", getBlogPosts);
+  const {data, isLoading, error} = useSWR<IBlogPost[]>("/api/blog/posts", fetcher);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string }>({});
   const user = null;
 
   const toggleModal = () => setFormModal(!formModal);
+
+  if (error) console.error(error);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const {target} = e;
@@ -43,8 +46,8 @@ const Blog = () => {
     }
   };
 
-  const renderBlogPosts = (blog_posts: IBlogPost[]) => {
-    if (blog_posts.length > 0) {
+  const renderBlogPosts = (blog_posts?: IBlogPost[]) => {
+    if (blog_posts && blog_posts.length > 0) {
       return (
         <div>
           <ul>

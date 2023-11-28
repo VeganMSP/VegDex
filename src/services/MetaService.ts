@@ -3,7 +3,7 @@ import {db} from "@/lib/kysely";
 import {seedContentPages} from "@/lib/seed";
 import {IPageInfo} from "@/models/IPageInfo";
 
-export const fetchHomePageFromDb = async (): Promise<IPageInfo> => {
+export const getHomePageFromDb = async (): Promise<IPageInfo> => {
   let homepage;
   let startTime = Date.now();
   console.log("db: ", db);
@@ -33,7 +33,7 @@ export const fetchHomePageFromDb = async (): Promise<IPageInfo> => {
   return homepage as IPageInfo;
 };
 
-export const fetchAboutPageFromDb = async (): Promise<IPageInfo> => {
+export const getAboutPageFromDb = async (): Promise<IPageInfo> => {
   let homepage;
   let startTime = Date.now();
   try {

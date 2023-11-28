@@ -4,7 +4,7 @@ import {seedFarmersMarkets, seedVeganCompanies} from "@/lib/seed";
 import {IVeganCompany} from "@/models/IVeganCompany";
 import {IFarmersMarket} from "@/models/IFarmersMarket";
 
-const getFarmersMarkets = async () => {
+export const getFarmersMarkets = async () => {
   let farmersMarkets;
   let startTime = Date.now();
   try {
@@ -29,7 +29,7 @@ const getFarmersMarkets = async () => {
   console.log(`Query took ${duration}ms`);
   return farmersMarkets as IFarmersMarket[];
 };
-const getVeganCompanies = async () => {
+export const getVeganCompanies = async () => {
   let veganCompanies;
   let startTime = Date.now();
   try {
@@ -53,9 +53,4 @@ const getVeganCompanies = async () => {
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
   return veganCompanies as IVeganCompany[];
-};
-export const getShoppingData = async (): Promise<{veganCompanies: IVeganCompany[], farmersMarkets: IFarmersMarket[]}> => {
-  let farmersMarkets = await getFarmersMarkets();
-  let veganCompanies = await getVeganCompanies();
-  return {farmersMarkets, veganCompanies};
 };
