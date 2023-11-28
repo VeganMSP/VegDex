@@ -1,21 +1,48 @@
 "use client";
 import {IPageInfo} from "@/models/IPageInfo";
 import useSWR from "swr";
-import {ContentPage} from "@/app/ui/contentPage";
-import {sanitizeHTML} from "@/functions/HtmlUtils";
+import {ContentPage, EditContentPage} from "@/app/ui/contentPage";
+import {useAuthorization} from "@/hooks/useAuthorization";
+import {useState} from "react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Home = () => {
-  const {data, isLoading, error} = useSWR<IPageInfo>("/api/meta/homepage", fetcher);
-  const sanitizedData = sanitizeHTML(data?.content as string);
+  const {isAdmin} = useAuthorization();
+  const [editMode, setEditMode] = useState(false);
+  const {data, isLoading, error, mutate} = useSWR<IPageInfo>("/api/meta/homepage", fetcher);
 
   if (error) console.error(error);
 
+  const handleSubmit = async (content: string) => {
+    const response = await fetch("/api/meta/homepage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({content})
+    });
+    if (response.ok) {
+      setEditMode(false);
+      await mutate({...data, content: content});
+    }
+  };
+
   return (
-    <ContentPage isLoading={isLoading}
-                 pageTitle={"VeganMSP.com"}
-                 sanitizedData={sanitizedData}/>
+    <>
+      {isAdmin && !editMode ? <button onClick={() => setEditMode(true)}>Edit</button> : null}
+      {editMode ?
+        <EditContentPage
+          isLoading={isLoading}
+          pageTitle={"VeganMSP.com"}
+          data={data?.content}
+          submitHandler={handleSubmit}
+        /> :
+      <ContentPage
+        isLoading={isLoading}
+        pageTitle={"VeganMSP.com"}
+        data={data}/>}
+    </>
   );
 };
 export default Home;

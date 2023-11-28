@@ -1,5 +1,4 @@
 "use server";
-
 import {db} from "@/lib/kysely";
 import {ILink} from "@/models/ILink";
 import {seedLinks} from "@/lib/seed";

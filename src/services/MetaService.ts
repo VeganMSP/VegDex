@@ -33,6 +33,19 @@ export const getHomePageFromDb = async (): Promise<IPageInfo> => {
   return homepage as IPageInfo;
 };
 
+export const updateHomePage = async (content: string) => {
+  let updatePage = await db
+    .updateTable("contentPages")
+    .set({
+      content: content,
+      updatedAt: new Date(Date.now())
+    } as IPageInfo)
+    .where("id", "=", 1)
+    .execute();
+  console.log("updatePage: ", updatePage);
+  return updatePage;
+};
+
 export const getAboutPageFromDb = async (): Promise<IPageInfo> => {
   let homepage;
   let startTime = Date.now();
@@ -60,5 +73,18 @@ export const getAboutPageFromDb = async (): Promise<IPageInfo> => {
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
   return homepage as IPageInfo;
+};
+
+export const updateAboutPage = async (content: string) => {
+  let updatePage = await db
+    .updateTable("contentPages")
+    .set({
+      content: content,
+      updatedAt: new Date(Date.now())
+    } as IPageInfo)
+    .where("id", "=", 2)
+    .executeTakeFirst();
+  console.log("updatePage: ", updatePage);
+  return updatePage;
 };
 
