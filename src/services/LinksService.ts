@@ -12,6 +12,8 @@ export const getLinksByCategory = async (): Promise<ILink[]> => {
       .selectFrom("links")
       .innerJoin("linkCategories", "links.categoryId", "linkCategories.id")
       .select(["links.name", "links.url", "links.description", "linkCategories.name as category"])
+      .orderBy("links.name")
+      .orderBy("linkCategories.name")
       .execute();
   } catch (e: any) {
     if (e.message === `relation "links" does not exist`
