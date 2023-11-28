@@ -14,7 +14,8 @@ export const getLinksByCategory = async (): Promise<ILink[]> => {
       .select(["links.name", "links.url", "links.description", "linkCategories.name as category"])
       .execute();
   } catch (e: any) {
-    if (e.message === `relation "links" does not exist`) {
+    if (e.message === `relation "links" does not exist`
+    || e.message === `relation "linkCategories" does not exist`) {
       console.log("Creating links table...");
       await seedLinks();
       startTime = Date.now();

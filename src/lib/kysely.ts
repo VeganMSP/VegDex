@@ -31,7 +31,6 @@ interface Link {
   url: string
   description: string
   slug: string
-  category: LinkCategory
   categoryId: number
   createdAt: ColumnType<Date, string | undefined, never>
   updatedAt: ColumnType<Date, string | undefined, never>
