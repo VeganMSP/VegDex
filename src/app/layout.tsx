@@ -18,7 +18,7 @@ export default async function RootLayout({children,}: { children: React.ReactNod
       <body className={`${roboto.className} flex flex-col h-screen`}>
       <Header/>
       <div className={"pb-3 w-full"}>
-        <div className={"w-5/6 mx-auto px-3"}>
+        <div className={"mx-auto px-3"}>
           {children}
         </div>
       </div>
