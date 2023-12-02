@@ -14,4 +14,4 @@ export const POST = auth(async (request: Request) => {
     return Response.error();
   }
   return new Response(null, {status: 204});
-});
+}) as any;
