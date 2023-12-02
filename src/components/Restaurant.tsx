@@ -1,7 +1,7 @@
 import React from "react";
 import {Restaurant} from "@/models/Restaurant";
 
-export const Restaurant = (props: {restaurant: Restaurant}) => {
+export const RestaurantItem = (props: {restaurant: Restaurant}) => {
     const {restaurant} = props;
 
     let restaurant_name;

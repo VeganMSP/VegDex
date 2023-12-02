@@ -1,5 +1,5 @@
 import {Restaurant} from "@/models/Restaurant";
-import {Restaurant} from "./Restaurant";
+import {RestaurantItem} from "./Restaurant";
 
 interface IProps {
   city: string;
@@ -16,7 +16,7 @@ export const City = (props: IProps) => {
       >{city}</h3>
       <ul>
         {restaurants.map(restaurant =>
-          <Restaurant
+          <RestaurantItem
             key={restaurant.slug}
             restaurant={restaurant}/>
         )}
