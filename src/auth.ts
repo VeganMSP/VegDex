@@ -11,8 +11,6 @@ export const config = {
   callbacks: {
     authorized({ request, auth }) {
       const { pathname } = request.nextUrl;
-      console.log("pathname: ", pathname);
-      console.log("session: ", auth);
       if (pathname === "/dashboard") {
         return !!(auth && auth.user && auth.user.email &&
           admin_users.includes(auth.user.email));

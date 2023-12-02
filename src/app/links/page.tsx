@@ -8,9 +8,7 @@ import {useAuthorization} from "@/hooks/useAuthorization";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const NewLink = () => {
-  return (
-    <p>Congrats, {"you're"} an admin!</p>
-  );
+  return null;
 };
 
 const Links = () => {
