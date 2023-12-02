@@ -1,29 +1,25 @@
 module.exports = {
-	extends: ['stylelint-config-standard-scss'],
-	ignoreFiles: [
-		'node_modules/**/*',
-		'public/**/*',
-		'vendor/**/*',
-	],
+	extends: ["stylelint-config-standard"],
 	rules: {
-		'at-rule-empty-line-before': null,
-		'color-function-notation': null,
-		'color-hex-length': null,
-		'declaration-block-no-redundant-longhand-properties': null,
-		'indentation': 'tab',
-		'max-line-length': null,
-		'no-descending-specificity': null,
-		'no-duplicate-selectors': null,
-		'number-max-precision': 8,
-		'property-no-unknown': null,
-		'property-no-vendor-prefix': null,
-		'selector-class-pattern': null,
-		'selector-id-pattern': null,
-		'string-quotes': null,
-		'value-keyword-case': null,
-		'value-no-vendor-prefix': null,
-
-		'scss/dollar-variable-empty-line-before': null,
-		'scss/no-global-function-names': null,
-	},
+		"at-rule-no-unknown": [
+			true,
+			{
+				ignoreAtRules: [
+					"tailwind",
+					"apply",
+					"responsive",
+					"variants",
+					"screen",
+				],
+			},
+		],
+		"declaration-block-trailing-semicolon": null,
+		"no-descending-specificity": null,
+		"selector-class-pattern": [
+			"^([a-z][a-z0-9]*)(?:\\:)?(-[a-z0-9]+)*",
+			{
+				message: (selector) => `Expected class selector "${selector}" to be written in lower kebab-case, with an optional 'category:'`,
+			},
+		]
+	}
 };

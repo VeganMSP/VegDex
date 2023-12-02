@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {format} from "date-fns";
-import withRouter from "../../helpers/withRouter";
-import {IBlogPost} from "../../models/IBlogPost";
+import {IBlogPost} from "@/models/IBlogPost";
 
 interface IState {
   slug: string;
@@ -14,7 +13,9 @@ const emptyBlogPost = (): IBlogPost => ({
   title: "",
   slug: "",
   content: "",
-  created_at: new Date()
+  category: "",
+  createdAt: new Date(),
+  updatedAt: new Date(),
 });
 
 const createEmptyBlogPost = <T extends Partial<IBlogPost>>(initialValues: T): IBlogPost & T => {
@@ -38,13 +39,13 @@ class SingleBlogPost extends Component<any, IState> {
   }
 
   static renderBlogPost(blog_post: IBlogPost) {
-    const {title, content, created_at} = blog_post;
+    const {title, content, createdAt} = blog_post;
 
     return (
       <div className='post-stub'>
         <h3 className='post-title'>
           <span className='date xs-hidden'>
-            {format(new Date(created_at), "yyyy-MM-dd")}
+            {format(new Date(createdAt), "yyyy-MM-dd")}
             &nbsp;
             {title}
           </span>
@@ -78,4 +79,4 @@ class SingleBlogPost extends Component<any, IState> {
   }
 }
 
-export default withRouter(SingleBlogPost);
+export default SingleBlogPost;

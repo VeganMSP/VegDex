@@ -4,6 +4,6 @@ export interface IFarmersMarket {
   slug: string;
   name: string;
   website: string;
-  address: IAddress;
+  address: string;
   description: string;
 }

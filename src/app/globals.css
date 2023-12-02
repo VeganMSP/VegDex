@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+    @apply text-blue-500;
+}
+
+.inline-list {
+    display: inline;
+}
+
+.inline-list li {
+    display: inline;
+}
+
+.inline-list li:not(:last-child)::after {
+    content: " | ";
+}

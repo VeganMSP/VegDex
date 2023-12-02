@@ -3,5 +3,6 @@ export interface IRestaurant {
   website: string;
   name: string;
   description: string;
-  all_vegan: boolean;
+  allVegan: boolean;
+  city: string;
 }

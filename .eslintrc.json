@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "@typescript-eslint",
+    "@stylistic/ts"
+  ],
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "@stylistic/ts/quotes": ["error", "double", {"allowTemplateLiterals": true}],
+    "semi": "error"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
+}

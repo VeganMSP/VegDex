@@ -1,5 +1,5 @@
 import React from "react";
-import {IRestaurant} from "../models/IRestaurant";
+import {IRestaurant} from "@/models/IRestaurant";
 
 export const Restaurant = (props: {restaurant: IRestaurant}) => {
     const {restaurant} = props;
@@ -15,25 +15,25 @@ export const Restaurant = (props: {restaurant: IRestaurant}) => {
 
     return (
       <li key={restaurant.name}>
-        {restaurant_name} - {restaurant.description}
+        {restaurant_name} {restaurant.description ? <>- {restaurant.description}</> : null}
       </li>
     );
   };
 
 export const RestaurantLink = (props: {restaurant: IRestaurant}): JSX.Element => {
-  const {name, website, all_vegan} = props.restaurant;
+  const {name, website, allVegan} = props.restaurant;
 
-  if (all_vegan && website === "") {
+  if (allVegan && website === "") {
     return (
       <strong>{name}</strong>
     );
-  } else if (!all_vegan && website !== "") {
+  } else if (!allVegan && website !== "") {
     return (
-      <a href={website}>{name}</a>
+      <a href={website} target={"_blank"}>{name}</a>
     );
-  } else if (all_vegan && website !== "") {
+  } else if (allVegan && website !== "") {
     return (
-      <a href={website}><strong>{name}</strong></a>
+      <a href={website} target={"_blank"}><strong>{name}</strong></a>
     );
   } else {
     return (<>

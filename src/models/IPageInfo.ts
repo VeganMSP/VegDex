@@ -1,3 +1,6 @@
 export interface IPageInfo {
-  content: string;
+  id?: number;
+  content?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
