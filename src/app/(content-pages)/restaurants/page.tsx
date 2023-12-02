@@ -2,17 +2,17 @@
 import useSWR from "swr";
 import {City} from "@/components/City";
 import {getRestaurantsByCity} from "@/services/RestaurantService";
-import {IRestaurant} from "@/models/IRestaurant";
+import {Restaurant} from "@/models/Restaurant";
 import {DataSection} from "@/app/ui/dataSection";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Restaurants = () => {
-  const {data, isLoading, error} = useSWR<IRestaurant[]>("/api/restaurants", fetcher);
+  const {data, isLoading, error} = useSWR<Restaurant[]>("/api/restaurants", fetcher);
 
-  const renderRestaurantsList = (restaurants?: IRestaurant[]) => {
+  const renderRestaurantsList = (restaurants?: Restaurant[]) => {
     if (!restaurants) return null;
-    let restaurants_by_city: {[key: string]: IRestaurant[]} = restaurants.reduce((acc, restaurant) => {
+    let restaurants_by_city: {[key: string]: Restaurant[]} = restaurants.reduce((acc, restaurant) => {
       acc[restaurant.city] = acc[restaurant.city] || [];
       acc[restaurant.city].push(restaurant);
       return acc;
@@ -34,9 +34,9 @@ const Restaurants = () => {
     );
   };
 
-  const renderCityList = (restaurants?: IRestaurant[]) => {
+  const renderCityList = (restaurants?: Restaurant[]) => {
     if (!restaurants) return null;
-    let restaurants_by_city: {[key: string]: IRestaurant[]} = restaurants.reduce((acc, restaurant) => {
+    let restaurants_by_city: {[key: string]: Restaurant[]} = restaurants.reduce((acc, restaurant) => {
       acc[restaurant.city] = acc[restaurant.city] || [];
       acc[restaurant.city].push(restaurant);
       return acc;

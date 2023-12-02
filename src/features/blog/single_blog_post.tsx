@@ -1,15 +1,15 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {format} from "date-fns";
-import {IBlogPost} from "@/models/IBlogPost";
+import {BlogPost} from "@/models/BlogPost";
 
 interface IState {
   slug: string;
-  blog_post: IBlogPost;
+  blog_post: BlogPost;
   loading: boolean;
 }
 
-const emptyBlogPost = (): IBlogPost => ({
+const emptyBlogPost = (): BlogPost => ({
   title: "",
   slug: "",
   content: "",
@@ -18,7 +18,7 @@ const emptyBlogPost = (): IBlogPost => ({
   updatedAt: new Date(),
 });
 
-const createEmptyBlogPost = <T extends Partial<IBlogPost>>(initialValues: T): IBlogPost & T => {
+const createEmptyBlogPost = <T extends Partial<BlogPost>>(initialValues: T): BlogPost & T => {
   return Object.assign(emptyBlogPost(), initialValues);
 };
 
@@ -38,7 +38,7 @@ class SingleBlogPost extends Component<any, IState> {
     };
   }
 
-  static renderBlogPost(blog_post: IBlogPost) {
+  static renderBlogPost(blog_post: BlogPost) {
     const {title, content, createdAt} = blog_post;
 
     return (

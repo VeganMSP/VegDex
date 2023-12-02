@@ -1,21 +1,21 @@
 "use client";
-import {useState} from "react";
+import {PageInfo} from "@/models/PageInfo";
 import useSWR from "swr";
-import {IPageInfo} from "@/models/IPageInfo";
 import {ContentPage, EditContentPage} from "@/app/ui/contentPage";
 import {useAuthorization} from "@/hooks/useAuthorization";
+import {useState} from "react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const AboutPage = () => {
-  const {isAdmin, data: session} = useAuthorization();
+const Home = () => {
+  const {isAdmin} = useAuthorization();
   const [editMode, setEditMode] = useState(false);
-  const {data, isLoading, error, mutate} = useSWR<IPageInfo>("/api/meta/about", fetcher);
+  const {data, isLoading, error, mutate} = useSWR<PageInfo>("/api/meta/homepage", fetcher);
 
   if (error) console.error(error);
 
   const handleSubmit = async (content: string) => {
-    const response = await fetch("/api/meta/about", {
+    const response = await fetch("/api/meta/homepage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -34,16 +34,15 @@ const AboutPage = () => {
       {editMode ?
         <EditContentPage
           isLoading={isLoading}
-          pageTitle={"About"}
+          pageTitle={"VeganMSP.com"}
           data={data?.content}
           submitHandler={handleSubmit}
         /> :
-        <ContentPage
-          isLoading={isLoading}
-          pageTitle={"About"}
-          data={data}
-        />}
+      <ContentPage
+        isLoading={isLoading}
+        pageTitle={"VeganMSP.com"}
+        data={data}/>}
     </>
   );
 };
-export default AboutPage;
+export default Home;

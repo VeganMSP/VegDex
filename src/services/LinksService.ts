@@ -1,9 +1,9 @@
 "use server";
 import {db} from "@/lib/kysely";
-import {ILink} from "@/models/ILink";
+import {Link} from "@/models/Link";
 import {seedLinks} from "@/lib/seed";
 
-export const getLinksByCategory = async (): Promise<ILink[]> => {
+export const getLinksByCategory = async (): Promise<Link[]> => {
   let links;
   let startTime = Date.now();
   try {
@@ -31,5 +31,5 @@ export const getLinksByCategory = async (): Promise<ILink[]> => {
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
   console.log(links);
-  return links as ILink[];
+  return links as Link[];
 };

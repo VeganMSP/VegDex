@@ -1,11 +1,11 @@
 import React from "react";
-import {IPageInfo} from "@/models/IPageInfo";
+import {PageInfo} from "@/models/PageInfo";
 import {sanitizeHTML} from "@/functions/HtmlUtils";
 import {formatDate} from "@/functions/date";
 
 export const ContentPage = (props: {
   isLoading: boolean,
-  data?: IPageInfo
+  data?: PageInfo
   pageTitle: string
 }) => {
   const {isLoading, data, pageTitle} = props;

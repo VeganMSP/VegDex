@@ -1,4 +1,4 @@
-export interface IRestaurant {
+export interface Restaurant {
   slug: string;
   website: string;
   name: string;

@@ -1,4 +1,4 @@
-export interface IVeganCompany {
+export interface VeganCompany {
   slug: string;
   name: string;
   website: string;

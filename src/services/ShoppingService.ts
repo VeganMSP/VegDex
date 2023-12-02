@@ -1,8 +1,8 @@
 "use server";
 import {db} from "@/lib/kysely";
 import {seedFarmersMarkets, seedVeganCompanies} from "@/lib/seed";
-import {IVeganCompany} from "@/models/IVeganCompany";
-import {IFarmersMarket} from "@/models/IFarmersMarket";
+import {VeganCompany} from "@/models/VeganCompany";
+import {FarmersMarket} from "@/models/FarmersMarket";
 
 export const getFarmersMarkets = async () => {
   let farmersMarkets;
@@ -27,7 +27,7 @@ export const getFarmersMarkets = async () => {
   }
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
-  return farmersMarkets as IFarmersMarket[];
+  return farmersMarkets as FarmersMarket[];
 };
 export const getVeganCompanies = async () => {
   let veganCompanies;
@@ -52,5 +52,5 @@ export const getVeganCompanies = async () => {
   }
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
-  return veganCompanies as IVeganCompany[];
+  return veganCompanies as VeganCompany[];
 };

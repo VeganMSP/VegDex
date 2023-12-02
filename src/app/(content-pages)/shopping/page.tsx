@@ -1,19 +1,19 @@
 "use client";
 import useSWR from "swr";
-import {IFarmersMarket} from "@/models/IFarmersMarket";
-import {IVeganCompany} from "@/models/IVeganCompany";
+import {FarmersMarket} from "@/models/FarmersMarket";
+import {VeganCompany} from "@/models/VeganCompany";
 import {DataSection} from "@/app/ui/dataSection";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Shopping = () => {
-  const { data: veganCompanyData, isLoading: veganCompanyLoading, error: veganCompanyError} = useSWR<IVeganCompany[]>("/api/shopping/vegan-companies", fetcher);
-  const { data: farmersMarketData, isLoading: farmersMarketLoading, error: farmersMarketError} = useSWR<IFarmersMarket[]>("/api/shopping/farmers-markets", fetcher);
+  const { data: veganCompanyData, isLoading: veganCompanyLoading, error: veganCompanyError} = useSWR<VeganCompany[]>("/api/shopping/vegan-companies", fetcher);
+  const { data: farmersMarketData, isLoading: farmersMarketLoading, error: farmersMarketError} = useSWR<FarmersMarket[]>("/api/shopping/farmers-markets", fetcher);
 
   if (veganCompanyError) console.error(veganCompanyError);
   if (farmersMarketError) console.error(farmersMarketError);
 
-  function renderVeganCompaniesList(veganCompanies?: IVeganCompany[]) {
+  function renderVeganCompaniesList(veganCompanies?: VeganCompany[]) {
     if (veganCompanies && veganCompanies.length > 0) {
       return (
         <div>
@@ -34,7 +34,7 @@ const Shopping = () => {
     );
   }
 
-  function renderFarmersMarketsList(farmersMarkets?: IFarmersMarket[]) {
+  function renderFarmersMarketsList(farmersMarkets?: FarmersMarket[]) {
     if (farmersMarkets && farmersMarkets.length > 0) {
       return (
         <div>
@@ -65,7 +65,7 @@ const Shopping = () => {
   </>);
 };
 
-const FarmersMarket = (props: { market: IFarmersMarket }) => {
+const FarmersMarket = (props: { market: FarmersMarket }) => {
   const {name, website, address, description} = props.market;
 
   return (
@@ -75,7 +75,7 @@ const FarmersMarket = (props: { market: IFarmersMarket }) => {
   );
 };
 
-const VeganCompany = (props: { company: IVeganCompany }) => {
+const VeganCompany = (props: { company: VeganCompany }) => {
 
   const {name, website, description} = props.company;
 

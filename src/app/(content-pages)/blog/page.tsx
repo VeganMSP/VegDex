@@ -2,13 +2,13 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
 import useSWR from "swr";
 import {format} from "date-fns";
-import {IBlogPost} from "@/models/IBlogPost";
+import {BlogPost} from "@/models/BlogPost";
 import Link from "next/link";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Blog = () => {
-  const {data, isLoading, error} = useSWR<IBlogPost[]>("/api/blog/posts", fetcher);
+  const {data, isLoading, error} = useSWR<BlogPost[]>("/api/blog/posts", fetcher);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string }>({});
   const user = null;
@@ -46,7 +46,7 @@ const Blog = () => {
     }
   };
 
-  const renderBlogPosts = (blog_posts?: IBlogPost[]) => {
+  const renderBlogPosts = (blog_posts?: BlogPost[]) => {
     if (blog_posts && blog_posts.length > 0) {
       return (
         <div>
@@ -77,13 +77,13 @@ const Blog = () => {
     <>
       <div>
         {isLoading ? <p><em>Loading...</em></p> :
-          renderBlogPosts(data as IBlogPost[])}
+          renderBlogPosts(data as BlogPost[])}
       </div>
     </>
   );
 };
 
-const BlogPost = (props: { post: IBlogPost }) => {
+const BlogPost = (props: { post: BlogPost }) => {
   const {title, slug, content, createdAt} = props.post;
   const date = new Date(createdAt);
   const fullDate = format(date, "yyyy-MM-dd");

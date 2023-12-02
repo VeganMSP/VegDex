@@ -1,6 +1,6 @@
-import {IAddress} from "./IAddress";
+import {Address} from "./Address";
 
-export interface IFarmersMarket {
+export interface FarmersMarket {
   slug: string;
   name: string;
   website: string;

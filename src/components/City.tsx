@@ -1,9 +1,9 @@
-import {IRestaurant} from "@/models/IRestaurant";
-import {Restaurant} from "./Restaurant";
+import {Restaurant} from "@/models/Restaurant";
+import {RestaurantItem} from "./Restaurant";
 
 interface IProps {
   city: string;
-  restaurants: IRestaurant[];
+  restaurants: Restaurant[];
 }
 
 export const City = (props: IProps) => {
@@ -16,7 +16,7 @@ export const City = (props: IProps) => {
       >{city}</h3>
       <ul>
         {restaurants.map(restaurant =>
-          <Restaurant
+          <RestaurantItem
             key={restaurant.slug}
             restaurant={restaurant}/>
         )}

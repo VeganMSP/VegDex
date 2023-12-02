@@ -1,7 +1,7 @@
 "use server";
 import {db} from "@/lib/kysely";
 import {seedBlogPosts} from "@/lib/seed";
-import {IBlogPost} from "@/models/IBlogPost";
+import {BlogPost} from "@/models/BlogPost";
 
 export const getBlogPosts = async () => {
   let blogPosts;
@@ -22,7 +22,7 @@ export const getBlogPosts = async () => {
       throw e;
     }
   }
-  return blogPosts as IBlogPost[];
+  return blogPosts as BlogPost[];
 };
 
 export const getBlogPostCategories = async () => {
