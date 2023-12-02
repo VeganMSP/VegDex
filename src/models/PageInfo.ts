@@ -1,4 +1,4 @@
-export interface IPageInfo {
+export interface PageInfo {
   id?: number;
   content?: string;
   createdAt?: Date;

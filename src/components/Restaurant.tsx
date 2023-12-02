@@ -1,7 +1,7 @@
 import React from "react";
-import {IRestaurant} from "@/models/IRestaurant";
+import {Restaurant} from "@/models/Restaurant";
 
-export const Restaurant = (props: {restaurant: IRestaurant}) => {
+export const Restaurant = (props: {restaurant: Restaurant}) => {
     const {restaurant} = props;
 
     let restaurant_name;
@@ -20,7 +20,7 @@ export const Restaurant = (props: {restaurant: IRestaurant}) => {
     );
   };
 
-export const RestaurantLink = (props: {restaurant: IRestaurant}): JSX.Element => {
+export const RestaurantLink = (props: {restaurant: Restaurant}): JSX.Element => {
   const {name, website, allVegan} = props.restaurant;
 
   if (allVegan && website === "") {

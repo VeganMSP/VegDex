@@ -1,9 +1,9 @@
 "use server";
 import {db} from "@/lib/kysely";
 import {seedRestaurants} from "@/lib/seed";
-import {IRestaurant} from "@/models/IRestaurant";
+import {Restaurant} from "@/models/Restaurant";
 
-export const getRestaurantsByCity = async (): Promise<IRestaurant[]> => {
+export const getRestaurantsByCity = async (): Promise<Restaurant[]> => {
   let restaurants;
   let startTime = Date.now();
   try {
@@ -26,5 +26,5 @@ export const getRestaurantsByCity = async (): Promise<IRestaurant[]> => {
   }
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
-  return restaurants as IRestaurant[];
+  return restaurants as Restaurant[];
 };

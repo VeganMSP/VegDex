@@ -1,9 +1,9 @@
-import {IRestaurant} from "@/models/IRestaurant";
+import {Restaurant} from "@/models/Restaurant";
 import {Restaurant} from "./Restaurant";
 
 interface IProps {
   city: string;
-  restaurants: IRestaurant[];
+  restaurants: Restaurant[];
 }
 
 export const City = (props: IProps) => {

@@ -1,9 +1,9 @@
 "use server";
 import {db} from "@/lib/kysely";
 import {seedContentPages} from "@/lib/seed";
-import {IPageInfo} from "@/models/IPageInfo";
+import {PageInfo} from "@/models/PageInfo";
 
-export const getHomePageFromDb = async (): Promise<IPageInfo> => {
+export const getHomePageFromDb = async (): Promise<PageInfo> => {
   let homepage;
   let startTime = Date.now();
   console.log("db: ", db);
@@ -30,7 +30,7 @@ export const getHomePageFromDb = async (): Promise<IPageInfo> => {
   console.log(homepage);
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
-  return homepage as IPageInfo;
+  return homepage as PageInfo;
 };
 
 export const updateHomePage = async (content: string) => {
@@ -39,14 +39,14 @@ export const updateHomePage = async (content: string) => {
     .set({
       content: content,
       updatedAt: new Date(Date.now())
-    } as IPageInfo)
+    } as PageInfo)
     .where("id", "=", 1)
     .execute();
   console.log("updatePage: ", updatePage);
   return updatePage;
 };
 
-export const getAboutPageFromDb = async (): Promise<IPageInfo> => {
+export const getAboutPageFromDb = async (): Promise<PageInfo> => {
   let homepage;
   let startTime = Date.now();
   try {
@@ -72,7 +72,7 @@ export const getAboutPageFromDb = async (): Promise<IPageInfo> => {
   console.log(homepage);
   const duration = Date.now() - startTime;
   console.log(`Query took ${duration}ms`);
-  return homepage as IPageInfo;
+  return homepage as PageInfo;
 };
 
 export const updateAboutPage = async (content: string) => {
@@ -81,7 +81,7 @@ export const updateAboutPage = async (content: string) => {
     .set({
       content: content,
       updatedAt: new Date(Date.now())
-    } as IPageInfo)
+    } as PageInfo)
     .where("id", "=", 2)
     .executeTakeFirst();
   console.log("updatePage: ", updatePage);

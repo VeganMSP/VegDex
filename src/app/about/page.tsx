@@ -1,7 +1,7 @@
 "use client";
 import {useState} from "react";
 import useSWR from "swr";
-import {IPageInfo} from "@/models/IPageInfo";
+import {PageInfo} from "@/models/PageInfo";
 import {ContentPage, EditContentPage} from "@/app/ui/contentPage";
 import {useAuthorization} from "@/hooks/useAuthorization";
 
@@ -10,7 +10,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const AboutPage = () => {
   const {isAdmin, data: session} = useAuthorization();
   const [editMode, setEditMode] = useState(false);
-  const {data, isLoading, error, mutate} = useSWR<IPageInfo>("/api/meta/about", fetcher);
+  const {data, isLoading, error, mutate} = useSWR<PageInfo>("/api/meta/about", fetcher);
 
   if (error) console.error(error);
 
