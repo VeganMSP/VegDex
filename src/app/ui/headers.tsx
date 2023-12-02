@@ -87,14 +87,14 @@ export const Footer = () => {
   return (
     <footer className="footer border-t text-sm text-gray-700 py-4 mt-auto w-full box-border bg-gray-100/60">
       <div className="mx-auto w-4/5 px-3">
-        <div className="flex flex-row flex-wrap mx-3 mt-2 items-center">
-          <div className="flex-grow-0 flex-shrink-0 basis-auto w-1/3">
+        <div className="flex lg:flex-row flex-wrap lg:mx-3 mt-2 items-center">
+          <div className="flex-grow-0 basis-auto lg:w-1/3">
             <SiteBio/>
             {session ?
               <>{isAdmin ? <><a href={"/dashboard"}>Dashboard</a> |</> : null} <SignOut/></> : <SignIn/>}
           </div>
 
-          <div className="flex-grow flex-shrink-0 basis-auto text-right">
+          <div className="flex-grow basis-auto md:text-right">
             <p>
               The content for this site is <a
               href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA</a> unless specified otherwise.
