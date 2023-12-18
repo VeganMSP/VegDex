@@ -19,7 +19,7 @@
   "devDependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "@stylistic/eslint-plugin-ts": "^1.4.1",
+    "@stylistic/eslint-plugin-ts": "^1.5.1",
     "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
