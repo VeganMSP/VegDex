@@ -26,7 +26,7 @@
     "@types/dompurify": "^3.0.5",
     "@types/jest": "^29.5.11",
     "@types/ms": "^0.7.34",
-    "@types/react": "18.2.43",
+    "@types/react": "18.2.45",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@vercel/postgres-kysely": "^0.6.0",
     "autoprefixer": "^10.4.16",
