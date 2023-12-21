@@ -32,7 +32,7 @@
     "autoprefixer": "^10.4.16",
     "date-fns": "^2.30.0",
     "dompurify": "^3.0.6",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "fathom-client": "^3.6.0",
     "jest": "^29.7.0",
