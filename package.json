@@ -30,7 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@vercel/postgres-kysely": "^0.6.0",
     "autoprefixer": "^10.4.16",
-    "date-fns": "^3.0.6",
+    "date-fns": "^3.1.0",
     "dompurify": "^3.0.6",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
