@@ -40,7 +40,7 @@
     "kysely": "^0.26.3",
     "kysely-neon": "^1.3.0",
     "ms": "^2.1.3",
-    "next-auth": "^5.0.0-beta.5",
+    "next-auth": "^5.0.0-beta.9",
     "postcss": "^8.4.33",
     "react-select": "^5.8.0",
     "stylelint": "^15.11.0",
