@@ -4089,10 +4089,10 @@ kysely-neon@^1.3.0:
   resolved "https://registry.yarnpkg.com/kysely-neon/-/kysely-neon-1.3.0.tgz#6baf007b069a3af3fa5e4f7cbad3fcd9c7fb1f0d"
   integrity sha512-CIIlbmqpIXVJDdBEYtEOwbmALag0jmqYrGfBeM4cHKb9AgBGs+X1SvXUZ8TqkDacQEqEZN2XtsDoUkcMIISjHw==
 
-kysely@^0.26.3:
-  version "0.26.3"
-  resolved "https://registry.yarnpkg.com/kysely/-/kysely-0.26.3.tgz#45fdd0153d8c9418b0ea9a6f05ed46b95ed27678"
-  integrity sha512-yWSgGi9bY13b/W06DD2OCDDHQmq1kwTGYlQ4wpZkMOJqMGCstVCFIvxCCVG4KfY1/3G0MhDAcZsip/Lw8/vJWw==
+kysely@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/kysely/-/kysely-0.27.2.tgz#b289ce5e561064ec613a17149b7155783d2b36de"
+  integrity sha512-DmRvEfiR/NLpgsTbSxma2ldekhsdcd65+MNiKXyd/qj7w7X5e3cLkXxcj+MypsRDjPhHQ/CD5u3Eq1sBYzX0bw==
 
 language-subtag-registry@^0.3.20:
   version "0.3.22"
