@@ -27,7 +27,7 @@
     "@types/jest": "^29.5.12",
     "@types/ms": "^0.7.34",
     "@types/react": "18.2.55",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@vercel/postgres-kysely": "^0.7.2",
     "autoprefixer": "^10.4.17",
     "date-fns": "^3.3.1",
