@@ -31,7 +31,7 @@
     "@vercel/postgres-kysely": "^0.7.2",
     "autoprefixer": "^10.4.17",
     "date-fns": "^3.3.1",
-    "dompurify": "^3.0.8",
+    "dompurify": "^3.0.9",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "fathom-client": "^3.6.0",
