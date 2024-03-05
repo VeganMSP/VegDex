@@ -910,10 +910,10 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@stylistic/eslint-plugin-js@1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-js/-/eslint-plugin-js-1.6.2.tgz#f0ad5a8cf1ce901626e3e6b08a02d94a628d7c12"
-  integrity sha512-ndT6X2KgWGxv8101pdMOxL8pihlYIHcOv3ICd70cgaJ9exwkPn8hJj4YQwslxoAlre1TFHnXd/G1/hYXgDrjIA==
+"@stylistic/eslint-plugin-js@1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-js/-/eslint-plugin-js-1.6.3.tgz#1111d42a81e9f827fdb3f1e09292af0682e37e1d"
+  integrity sha512-ckdz51oHxD2FaxgY2piJWJVJiwgp8Uu96s+as2yB3RMwavn3nHBrpliVukXY9S/DmMicPRB2+H8nBk23GDG+qA==
   dependencies:
     "@types/eslint" "^8.56.2"
     acorn "^8.11.3"
@@ -921,12 +921,12 @@
     eslint-visitor-keys "^3.4.3"
     espree "^9.6.1"
 
-"@stylistic/eslint-plugin-ts@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-ts/-/eslint-plugin-ts-1.6.2.tgz#e8327ec54c264cb5bd17cd58b05264035655960c"
-  integrity sha512-FizV58em0OjO/xFHRIy/LJJVqzxCNmYC/xVtKDf8aGDRgZpLo+lkaBKfBrbMkAGzhBKbYj+iLEFI4WEl6aVZGQ==
+"@stylistic/eslint-plugin-ts@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-ts/-/eslint-plugin-ts-1.6.3.tgz#4829ca62446d1005f99e5ce9e7ec8588737cc0d1"
+  integrity sha512-v5GwZsPLblWM9uAIdaSi31Sed3XBWlTFQJ3b5upEmj6QsKYivA5nmIYutwqqL133QdVWjmC86pINlx2Muq3uNQ==
   dependencies:
-    "@stylistic/eslint-plugin-js" "1.6.2"
+    "@stylistic/eslint-plugin-js" "1.6.3"
     "@types/eslint" "^8.56.2"
     "@typescript-eslint/utils" "^6.21.0"
 
