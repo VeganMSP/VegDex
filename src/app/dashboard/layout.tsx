@@ -16,7 +16,7 @@ import {useAuthorization} from "@/hooks/useAuthorization";
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: HomeIcon, current: true },
   { name: "Content Pages", href: "/dashboard/content-pages", icon: UsersIcon, current: false },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false },
+  { name: "Restaurants", href: "/dashboard/restaurants", icon: FolderIcon, current: false },
   { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
   { name: "Documents", href: "#", icon: DocumentDuplicateIcon, current: false },
   { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
@@ -167,7 +167,7 @@ const DashboardLayout = ({children,}: {children: ReactNode}) => {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div className="hidden lg:z-10 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <nav className="flex flex-1 flex-col">
