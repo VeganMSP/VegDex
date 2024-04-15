@@ -1405,17 +1405,17 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@vercel/postgres-kysely@^0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@vercel/postgres-kysely/-/postgres-kysely-0.7.2.tgz#ed827b4d9eb950394d072fddb695e782f04da8f5"
-  integrity sha512-2sLPgcrZg1YzG6dQMuS1O+63cbK9sUHxpmhz0pN8PMccca1VpK571oONuv5OsD1xzEUmFwRtOdwIMXUWSMMDrA==
+"@vercel/postgres-kysely@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@vercel/postgres-kysely/-/postgres-kysely-0.8.0.tgz#d50f75ebb820bf72ad47b085cd1ab74d16135c0a"
+  integrity sha512-3VCkqwtJ1p7p6P7tURJxDDVb6a7riXK8O2dsnXNESZ+C0txHLSNGlvL88w63isn10aBLJ2E1oGLqrgJRX72vJw==
   dependencies:
-    "@vercel/postgres" "0.7.2"
+    "@vercel/postgres" "0.8.0"
 
-"@vercel/postgres@0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@vercel/postgres/-/postgres-0.7.2.tgz#a3d1737a7e3717c2a9088b73f8bba0401666173a"
-  integrity sha512-IqR/ZAvoPGcPaXl9eWWB5KaA+w/81RzZa/18P4izQRHpNBkTGt9HwGfYi9+wut5UgxNq4QSX9A7HIQR6QDvX2Q==
+"@vercel/postgres@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@vercel/postgres/-/postgres-0.8.0.tgz#ea658c8b19d883b1225d2e3d195e7251254936cd"
+  integrity sha512-/QUV9ExwaNdKooRjOQqvrKNVnRvsaXeukPNI5DB1ovUTesglfR/fparw7ngo1KUWWKIVpEj2TRrA+ObRHRdaLg==
   dependencies:
     "@neondatabase/serverless" "0.7.2"
     bufferutil "4.0.8"
