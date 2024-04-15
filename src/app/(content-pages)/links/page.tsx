@@ -1,6 +1,6 @@
 "use client";
 import React, {ChangeEvent, FormEvent, useState} from "react";
-import {Link} from "@/models/Link";
+import {Link as LinkModel} from "@/models/Link";
 import {DataSection} from "@/app/ui/dataSection";
 import useSWR from "swr";
 import {useAuthorization} from "@/hooks/useAuthorization";
@@ -12,14 +12,14 @@ const NewLink = () => {
 };
 
 const Links = () => {
-  const {data, isLoading, error} = useSWR<Link[]>("/api/links", fetcher);
+  const {data, isLoading, error} = useSWR<LinkModel[]>("/api/links", fetcher);
   const [formModal, setFormModal] = useState(false);
   const [form, setForm] = useState<{ [key: string]: string }>({});
   const {isAdmin} = useAuthorization();
 
-  const renderLinksList = (links: Link[] | null) => {
+  const renderLinksList = (links: LinkModel[] | null) => {
     if (!links) return null;
-    let links_by_category: { [key: string]: Link[] } = links.reduce((acc, link) => {
+    let links_by_category: { [key: string]: LinkModel[] } = links.reduce((acc, link) => {
       acc[link.category] = acc[link.category] || [];
       acc[link.category].push(link);
       return acc;
@@ -74,13 +74,13 @@ const Links = () => {
   return (<>
     {isAdmin ? <NewLink/> : null}
     <DataSection isLoading={isLoading} key={"Groups & Links"} sectionTitle={"Groups & Links"}>
-      {renderLinksList(data as Link[])}
+      {renderLinksList(data as LinkModel[])}
     </DataSection>
   </>);
 };
 export default Links;
 
-const LinkCategory = (props: { category: string, links: Link[] }) => {
+const LinkCategory = (props: { category: string, links: LinkModel[] }) => {
   const {category, links} = props;
 
   return (
@@ -98,7 +98,7 @@ const LinkCategory = (props: { category: string, links: Link[] }) => {
   );
 };
 
-const Link = (props: { link: Link }) => {
+const Link = (props: { link: LinkModel }) => {
   const {name, url, description} = props.link;
 
   return (
