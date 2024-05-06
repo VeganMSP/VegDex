@@ -22,7 +22,7 @@
     "@stylistic/eslint-plugin-ts": "^1.7.0",
     "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.5",
+    "@testing-library/react": "^15.0.6",
     "@types/dompurify": "^3.0.5",
     "@types/jest": "^29.5.12",
     "@types/ms": "^0.7.34",
