@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "next": "^14.2.3",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0"
   },
   "scripts": {
@@ -26,7 +26,7 @@
     "@types/dompurify": "^3.0.5",
     "@types/jest": "^29.5.12",
     "@types/ms": "^0.7.34",
-    "@types/react": "18.2.79",
+    "@types/react": "18.3.2",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@vercel/postgres-kysely": "^0.8.0",
     "autoprefixer": "^10.4.19",
