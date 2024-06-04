@@ -3373,10 +3373,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.0.9":
-  version: 3.0.9
-  resolution: "dompurify@npm:3.0.9"
-  checksum: 10c0/4da4b86e4010822d01392e25f0686367a4f1e1048a4681178c725de9a817410c5650c17b326c08a018f79437b3177a4bdc7faf4c37b0cf2547bc280aa2038a16
+"dompurify@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "dompurify@npm:3.1.5"
+  checksum: 10c0/8227fb1328c02d94f823de8cd499fca5ee07051e03e6b52bce06b592348aeb6e56ea8e2a4b0a9cfaeac7d623e4b5a52e4326aedf72596a6c2510b88dfcf2a2b6
   languageName: node
   linkType: hard
 
@@ -8493,7 +8493,7 @@ __metadata:
     "@vercel/postgres-kysely": "npm:^0.8.0"
     autoprefixer: "npm:^10.4.19"
     date-fns: "npm:^3.6.0"
-    dompurify: "npm:^3.0.9"
+    dompurify: "npm:^3.1.5"
     eslint: "npm:^8.56.0"
     eslint-config-next: "npm:^14.0.4"
     fathom-client: "npm:^3.6.0"
