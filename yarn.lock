@@ -3943,10 +3943,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fathom-client@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "fathom-client@npm:3.6.0"
-  checksum: 10c0/1c7d036ad6dda8b6d8ab41c926661aadff668cad8c72b1d96c39fff588f676f6bd07d71de79f40c9fa70af2521fea78a660380abadf323b2cb7d042dc358c6b1
+"fathom-client@npm:^3.7.2":
+  version: 3.7.2
+  resolution: "fathom-client@npm:3.7.2"
+  checksum: 10c0/f198669fba3aa14c4f1adc2b5afdce282503945fe3ac3d842ab7a6d46c90cf4a703ccad99abcbc71faa095348d9940a2d1aa0cf718c58e4d8479fa5dcb88aff2
   languageName: node
   linkType: hard
 
@@ -8438,7 +8438,7 @@ __metadata:
     dompurify: "npm:^3.1.5"
     eslint: "npm:^8.56.0"
     eslint-config-next: "npm:^14.0.4"
-    fathom-client: "npm:^3.6.0"
+    fathom-client: "npm:^3.7.2"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     kysely: "npm:^0.27.3"
