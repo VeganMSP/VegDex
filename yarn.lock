@@ -5736,10 +5736,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kysely@npm:^0.27.3":
-  version: 0.27.3
-  resolution: "kysely@npm:0.27.3"
-  checksum: 10c0/73c730404090744e7b89b1ca6870f1256fc9c0f2d5bcf739238ba293eaed4991d8228f5618e8e27e0f63681e0f3583b8e712919687e815956270ac319786a866
+"kysely@npm:^0.27.4":
+  version: 0.27.4
+  resolution: "kysely@npm:0.27.4"
+  checksum: 10c0/05d223dca3f69778e28511d30cfff485e8e035a43fb01b24f1624b87f850cd6f87e33dcc04e752f7454ac8aed2743d982dabe3be6bc402c63568d020d5b0dd1d
   languageName: node
   linkType: hard
 
@@ -8441,7 +8441,7 @@ __metadata:
     fathom-client: "npm:^3.7.2"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
-    kysely: "npm:^0.27.3"
+    kysely: "npm:^0.27.4"
     kysely-neon: "npm:^1.3.0"
     ms: "npm:^2.1.3"
     next: "npm:^14.2.3"
